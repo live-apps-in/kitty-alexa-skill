@@ -1,0 +1,21 @@
+{
+  "name": "kitty-alexa-skill",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jaga-live/kitty-alexa-skill.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jaga-live/kitty-alexa-skill/issues"
+  },
+  "homepage": "https://github.com/jaga-live/kitty-alexa-skill#readme",
+  "dependencies": {
+    "ask-sdk": "^2.12.1"
+  }
+}
