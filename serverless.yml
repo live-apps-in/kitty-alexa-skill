@@ -1,0 +1,15 @@
+service: kitty-alexa-serverless
+
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+
+functions:
+  hello:
+    handler: ./src/handler.hello
+
+plugins:
+  - serverless-offline
+  - serverless-plugin-typescript

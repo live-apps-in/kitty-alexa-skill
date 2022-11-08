@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "ask-sdk": "^2.12.1",
-    "serverless-offline": "^11.2.3"
-  }
-}
