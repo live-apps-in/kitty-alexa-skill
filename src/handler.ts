@@ -5,6 +5,7 @@ import * as Alexa from 'ask-sdk';
 
 ///Intents
 import { GreetIntentHandler } from './intent/GreetIntent';
+import { TextIntentHandler } from './intent/TextIntent';
 
 const LaunchRequestHandler: RequestHandler = {
 	canHandle(handlerInput: HandlerInput): boolean {
@@ -17,7 +18,7 @@ const LaunchRequestHandler: RequestHandler = {
 		return handlerInput.responseBuilder
 			.speak(speechText)
 			.reprompt(speechText)
-			.withSimpleCard('Hello, kitty chan is ready to help you!', speechText)
+			.withSimpleCard('kitty chan', speechText)
 			.getResponse();
 	},
 };
@@ -91,6 +92,7 @@ module.exports.hello = SkillBuilders.custom()
 	.addRequestHandlers(
 		LaunchRequestHandler,
 		GreetIntentHandler,
+		TextIntentHandler,
 		HelpIntentHandler,
 		CancelAndStopIntentHandler,
 		SessionEndedRequestHandler,
