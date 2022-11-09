@@ -21,14 +21,14 @@ export const TextIntentHandler: RequestHandler = {
 		const upsServiceClient = serviceClientFactory.getUpsServiceClient();
 		const profileName = await upsServiceClient.getProfileGivenName();
 
-		const message = request.intent.slots.message.slotValue.value;
+		const message = request.intent.slots?.message?.slotValue?.value || request.intent.slots?.message?.value;
         
 		await textService.textServer(message, profileName);
         
 		return handlerInput.responseBuilder
-			.speak('')
-			.reprompt('See ya!')
-			.withSimpleCard('', '')
+			.speak('It\'s Sent')
+			.reprompt('Anything else?')
+			.withSimpleCard('Message Sent', 'Message Sent')
 			.getResponse();
 	},
 };
