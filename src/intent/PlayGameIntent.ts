@@ -7,11 +7,11 @@ import { TEXT } from '../types/text.types';
 
 const textService = container.get<TextService>(TYPES.TextService);
 ///Greet Users
-export const TextIntentHandler: RequestHandler = {
+export const PlayGameIntentHandler: RequestHandler = {
 	canHandle(handlerInput: HandlerInput): boolean {
 		const request: any = handlerInput.requestEnvelope.request;
 		return request.type === 'IntentRequest'
-            && request.intent.name === 'TextIntent';
+            && request.intent.name === 'PlayGameIntent';
 	},
 
 	async handle(handlerInput: HandlerInput): Promise<Response> {
@@ -23,9 +23,9 @@ export const TextIntentHandler: RequestHandler = {
 		const profileName = await upsServiceClient.getProfileGivenName();
 
 		const message = request.intent.slots?.message?.slotValue?.value || request.intent.slots?.message?.value;
-		console.log(message, '--Message--');
-		await textService.textServer(message, profileName, TEXT.message);
-        
+
+		await textService.textServer(message, profileName, TEXT.playGame);
+
 		return handlerInput.responseBuilder
 			.speak('It\'s Sent')
 			.reprompt('Anything else?')

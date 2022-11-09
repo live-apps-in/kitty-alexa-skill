@@ -6,6 +6,7 @@ import * as Alexa from 'ask-sdk';
 ///Intents
 import { GreetIntentHandler } from './intent/GreetIntent';
 import { TextIntentHandler } from './intent/TextIntent';
+import { PlayGameIntentHandler } from './intent/PlayGameIntent';
 
 const LaunchRequestHandler: RequestHandler = {
 	canHandle(handlerInput: HandlerInput): boolean {
@@ -32,12 +33,12 @@ const HelpIntentHandler: RequestHandler = {
             && request.intent.name === 'AMAZON.HelpIntent';
 	},
 	handle(handlerInput: HandlerInput): Response {
-		const speechText = 'You can ask me the weather!';
+		const speechText = 'You can ask me to send texts to Gamer\'s Hub Server!';
 
 		return handlerInput.responseBuilder
 			.speak(speechText)
 			.reprompt(speechText)
-			.withSimpleCard('You can ask me the weather!', speechText)
+			.withSimpleCard('You can ask me to send texts to Gamer\'s Hub Server!', speechText)
 			.getResponse();
 	},
 };
@@ -93,6 +94,7 @@ module.exports.hello = SkillBuilders.custom()
 		LaunchRequestHandler,
 		GreetIntentHandler,
 		TextIntentHandler,
+		PlayGameIntentHandler,
 		HelpIntentHandler,
 		CancelAndStopIntentHandler,
 		SessionEndedRequestHandler,
