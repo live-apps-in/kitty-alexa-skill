@@ -9,8 +9,8 @@ interface axiosConfig {
 
 @injectable()
 export class SharedService {
-	private readonly KITTY_BOT_API = 'https://kitty-chan-discord.herokuapp.com';
-	// private readonly KITTY_BOT_API = 'https://kittychan.jagalive.in';
+	// private readonly KITTY_BOT_API = 'https://kitty-chan-discord.herokuapp.com';
+	private readonly KITTY_BOT_API = 'https://kittychan.jagalive.in';
 	/////Global Axios Config
 	async axiosInstance(payload: axiosConfig): Promise<void> {
 		const { method, route } = payload;
