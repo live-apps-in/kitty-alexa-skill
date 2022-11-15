@@ -11,7 +11,7 @@ import { PlayGameIntentHandler } from './intent/PlayGameIntent';
 const LaunchRequestHandler: RequestHandler = {
 	canHandle(handlerInput: HandlerInput): boolean {
 		const request = handlerInput.requestEnvelope.request;
-		console.log(handlerInput.requestEnvelope, '--REQUEST ENVELOPE--')
+		console.log(handlerInput.requestEnvelope, '--REQUEST ENVELOPE--');
 		return request.type === 'LaunchRequest';
 	},
 	handle(handlerInput: HandlerInput): Response {
