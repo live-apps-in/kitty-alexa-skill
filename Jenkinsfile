@@ -2,20 +2,14 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Install Packagaes') {
             steps {
-                echo 'Building..'
-                echo 'Hello'
+                sh 'npm i'
             }
         }
-        stage('Test') {
+        stage('Deploy AWS Lambda Function') {
             steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
+                sh 'serverless deploy --region ap-south-1'
             }
         }
     }
