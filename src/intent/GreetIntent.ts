@@ -17,7 +17,7 @@ export const GreetIntentHandler: RequestHandler = {
 		const profileName = await upsServiceClient.getProfileGivenName();
 
 		const speechResponse = `Hello, ${profileName}`;
-		console.log(profileName, '-------profile name-------');
+		console.log(profileName, '------profile name------');
 
 		return handlerInput.responseBuilder
 			.speak(speechResponse)
