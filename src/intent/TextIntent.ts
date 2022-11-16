@@ -20,7 +20,14 @@ export const TextIntentHandler: RequestHandler = {
 
 		///Fetch User info
 		const upsServiceClient = serviceClientFactory.getUpsServiceClient();
-		const profileName = await upsServiceClient.getProfileGivenName();
+		try {
+			var profileName = await upsServiceClient.getProfileGivenName();
+		} catch (error) {
+			return handlerInput.responseBuilder
+				.speak('We need your First name to create personalized text with your name. Can you please provide First name permission in the kitty chan skill settings')
+				.withSimpleCard('Message Sent', 'Message Sent')
+				.getResponse();
+		}
 
 		const message = request.intent.slots?.message?.slotValue?.value || request.intent.slots?.message?.value;
 		console.log(message, '--Message--');
