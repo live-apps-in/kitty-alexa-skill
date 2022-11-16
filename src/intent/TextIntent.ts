@@ -1,5 +1,7 @@
 import { HandlerInput, RequestHandler } from 'ask-sdk-core';
 import { Response } from 'ask-sdk-model';
+import { text_permission_content } from '../content/text.content';
+import { voice_permission_content } from '../content/voice.content';
 import container from '../core/inversify';
 import { TYPES } from '../core/types.inversify';
 import { TextService } from '../services/text.service';
@@ -24,8 +26,9 @@ export const TextIntentHandler: RequestHandler = {
 			var profileName = await upsServiceClient.getProfileGivenName();
 		} catch (error) {
 			return handlerInput.responseBuilder
-				.speak('We need your First name to create personalized text with your name. Can you please provide First name permission in the kitty chan skill settings')
-				.withSimpleCard('Message Sent', 'Message Sent')
+				.speak(voice_permission_content.given_name)
+				.withAskForPermissionsConsentCard(['alexa::profile:given_name:read'])
+				.withSimpleCard('Permission Required', text_permission_content.given_name)
 				.getResponse();
 		}
 
