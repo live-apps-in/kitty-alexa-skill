@@ -1,5 +1,6 @@
 import { HandlerInput, RequestHandler } from 'ask-sdk-core';
 import { Response } from 'ask-sdk-model';
+import { alias } from '../content/alias_mapping';
 import { text_permission_content } from '../content/text.content';
 import { voice_permission_content } from '../content/voice.content';
 import container from '../core/inversify';
@@ -24,6 +25,11 @@ export const TextIntentHandler: RequestHandler = {
 		const upsServiceClient = serviceClientFactory.getUpsServiceClient();
 		try {
 			var profileName = await upsServiceClient.getProfileGivenName();
+			
+			///Set Nicknames - TEMP
+			if (alias[profileName]) profileName = alias[profileName];
+			if (alias[profileName.toLowerCase()]) profileName = alias[profileName.toLowerCase()];
+
 		} catch (error) {
 			return handlerInput.responseBuilder
 				.speak(voice_permission_content.given_name)
