@@ -5,9 +5,8 @@ import { TextService } from '../services/text.service';
 import { TYPES } from './types.inversify';
 
 const container = new Container({
-	defaultScope: 'Singleton'
+  defaultScope: 'Singleton',
 });
-
 
 container.bind<TextService>(TYPES.TextService).to(TextService);
 container.bind<SharedService>(TYPES.SharedService).to(SharedService);
