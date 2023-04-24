@@ -9,7 +9,8 @@
   },
   "scripts": {
     "lint": "eslint . --ext .ts",
-    "lint:fix": "npm run lint -- --fix"
+    "lint:fix": "npm run lint -- --fix",
+    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\""
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.0.0",
